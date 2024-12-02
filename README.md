@@ -40,3 +40,9 @@ yarn db:init
 # ou
 pnpm db:init
 ```
+
+4. **Informações para login**
+
+```bash
+{user: "admin@exemplo.com", password: "senha123"}
+```

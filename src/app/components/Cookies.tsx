@@ -22,23 +22,21 @@ interface Cookie {
 
 const Cookies = () => {
   const [cookies, setCookies] = useState<Cookie[]>([]);
-  const [opened, setOpened] = useState(false); // Estado para controlar a visibilidade do modal
+  const [opened, setOpened] = useState(false);
   const [newCookie, setNewCookie] = useState<Cookie>({
     id: 0,
     name: "",
     price: 0,
     imageUrl: "",
   });
-  const [isEditMode, setIsEditMode] = useState(false); // Estado para saber se o modal está em modo de edição
+  const [isEditMode, setIsEditMode] = useState(false);
 
-  // Buscar cookies cadastrados
   const fetchCookies = async () => {
     const res = await fetch("/api/cookies");
     const data = await res.json();
     setCookies(data);
   };
 
-  // Adicionar um novo cookie
   const addCookie = async () => {
     const res = await fetch("/api/cookies", {
       method: "POST",
@@ -55,8 +53,8 @@ const Cookies = () => {
     const data = await res.json();
     if (res.ok) {
       setCookies((prevCookies) => [...prevCookies, data]);
-      setOpened(false); // Fechar o modal
-      setNewCookie({ id: 0, name: "", price: 0, imageUrl: "" }); // Limpar o estado do cookie
+      setOpened(false);
+      setNewCookie({ id: 0, name: "", price: 0, imageUrl: "" });
     } else {
       alert("Erro ao adicionar o cookie.");
     }
@@ -114,7 +112,6 @@ const Cookies = () => {
         Bem-vindo ao seu Perfil!
       </Text>
 
-      {/* Lista de Cookies */}
       <Group position="center" spacing="xl" wrap="wrap">
         {cookies.length === 0 ? (
           <Text>Não há cookies cadastrados ainda.</Text>
@@ -138,7 +135,6 @@ const Cookies = () => {
               <Button variant="light" color="blue" fullWidth>
                 Comprar
               </Button>
-              {/* Botão para editar o cookie */}
               <Button
                 variant="outline"
                 color="green"
@@ -153,12 +149,10 @@ const Cookies = () => {
         )}
       </Group>
 
-      {/* Botão para abrir o modal para adicionar novo cookie */}
       <Button onClick={() => setOpened(true)} mt="xl">
         Adicionar Novo Cookie
       </Button>
 
-      {/* Modal para adicionar ou editar um cookie */}
       <Modal
         opened={opened}
         onClose={() => setOpened(false)}

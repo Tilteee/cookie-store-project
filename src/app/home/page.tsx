@@ -120,20 +120,6 @@ const ImprovedUserDashboard = () => {
           >
             Cookies
           </Button>
-          {/* <Button
-            leftIcon={<IconSettings />}
-            fullWidth
-            variant="light"
-            onClick={() => setCurrentPage("settings")}
-            style={{
-              backgroundColor: "#f3f4f6",
-              color: "#374151",
-              fontWeight: 500,
-              padding: "12px 20px",
-            }}
-          >
-            Configurações
-          </Button> */}
           <Divider my="sm" />
           <Button
             leftIcon={<IconLogout />}
